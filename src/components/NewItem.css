@@ -1,0 +1,16 @@
+.noticia-article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color1);
+}
+
+.noticia-parrafo{
+    font-size: var(--fontSizeText-lg);
+}
+
+@media (max-width: 768px) {
+    .noticia-titulo{
+        font-size: var(--fontSizeTitle-md);
+    }
+}

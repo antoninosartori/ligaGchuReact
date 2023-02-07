@@ -1,0 +1,13 @@
+.genericTitle{
+    font-size: var(--fontSizeTitle-lg);
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color1);
+    margin-top: var(--margin-Y);
+}
+
+@media (max-width: 768px) {
+    .genericTitle{
+        font-size: var(--fontSizeTitle-md);
+    }
+}
