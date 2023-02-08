@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Posiciones.css'
 import GenericTitle from '../components/GenericTitle'
 import Select from '../components/Select'
+import { getDataFromApi } from '../assets/utils/getDataFromApi'
 
 const tableHeader = [
     {name: 'pos'},
@@ -34,18 +35,9 @@ const Posiciones = () => {
     const [division, setDivision] = useState('posicionesA')
     const [categoria, setCategoria] = useState('1')
 
-    const getPosiciones = async () => {
-        try {
-            const res = await fetch(`https://sheet.best/api/sheets/fdeada79-ae62-47d8-84dc-5e7ce2a355ae/tabs/${division}${categoria}`)
-            const data = await res.json();
-            setPosiciones(data);
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     useEffect(() => {
-        getPosiciones()
+        const endpoint = `${division}${categoria}`
+        getDataFromApi(endpoint).then(setPosiciones)
     },[division, categoria])
 
     const selectChangeDivision = (event) => {

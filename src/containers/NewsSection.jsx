@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import NewItem from '../components/NewItem'
 import './NewsSection.css'
+import { getDataFromApi } from '../assets/utils/getDataFromApi'
 
 const NewsSection = () => {
     const [news, setNews] = useState([])
 
-    const getNews = async () => {
-        try {
-            const res = await fetch("https://sheet.best/api/sheets/fdeada79-ae62-47d8-84dc-5e7ce2a355ae?_format=records")
-            const data = await res.json();
-            setNews(data);
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     useEffect(() => {
-        getNews()
-    }, [])
+        const endpoint = 'noticias'
+        getDataFromApi(endpoint).then(setNews)
+    }, []) 
 
     return (
         
